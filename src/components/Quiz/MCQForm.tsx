@@ -88,7 +88,7 @@ export const MCQForm = ({ mcq, onSave, onCancel }: MCQFormProps) => {
           </button>
         </div>
         {options.length > 0 ? (
-          options.map((option, index) => (
+          options.map((option) => (
             <div key={option.id} className="option-input" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
               <span className="option-label">{option.id.toUpperCase()}.</span>
               <input
