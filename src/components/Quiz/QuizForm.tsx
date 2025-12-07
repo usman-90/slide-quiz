@@ -104,17 +104,23 @@ export const QuizForm = ({ quiz, onClose }: QuizFormProps) => {
                   <span className="mcq-number">Q{index + 1}</span>
                   <span className="mcq-question">{mcq.question}</span>
                 </div>
-                <div className="mcq-options">
-                  {mcq.options.map((opt) => (
-                    <div
-                      key={opt.id}
-                      className={`mcq-option ${opt.id === mcq.answer ? 'correct' : ''}`}
-                    >
-                      {opt.id.toUpperCase()}. {opt.text}
-                      {opt.id === mcq.answer && <span className="correct-badge">✓</span>}
-                    </div>
-                  ))}
-                </div>
+                {mcq.options.length > 0 ? (
+                  <div className="mcq-options">
+                    {mcq.options.map((opt) => (
+                      <div
+                        key={opt.id}
+                        className={`mcq-option ${opt.id === mcq.answer ? 'correct' : ''}`}
+                      >
+                        {opt.id.toUpperCase()}. {opt.text}
+                        {opt.id === mcq.answer && <span className="correct-badge">✓</span>}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="mcq-answer-only">
+                    <strong>Answer:</strong> {mcq.answer}
+                  </div>
+                )}
                 <div className="mcq-actions">
                   <button onClick={() => setEditingMCQ(mcq)} className="edit-btn">
                     Edit

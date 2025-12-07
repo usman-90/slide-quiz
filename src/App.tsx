@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import { ThemeContext, useThemeProvider } from './hooks/useTheme';
 import { Login } from './components/Auth/Login';
@@ -56,7 +56,7 @@ function App() {
                     </div>
                     <Login />
                     <p className="auth-switch">
-                      Don't have an account? <a href="/signup">Sign up</a>
+                      Don't have an account? <Link to="/signup">Sign up</Link>
                     </p>
                   </div>
                 </AuthRoute>
@@ -72,7 +72,7 @@ function App() {
                     </div>
                     <Signup />
                     <p className="auth-switch">
-                      Already have an account? <a href="/login">Login</a>
+                      Already have an account? <Link to="/login">Login</Link>
                     </p>
                   </div>
                 </AuthRoute>

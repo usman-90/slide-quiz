@@ -86,13 +86,17 @@
 - Visual question preview
 - Correct answer indication
 - Form validation
+- Support for questions with 0 to n options
+- Answer-only display for questions without options
 
 **MCQForm Features:**
 - Question input
-- 4 options (A, B, C, D) input
-- Correct answer selection dropdown
+- **Dynamic options** (0 to n options)
+- Add/remove options dynamically
+- Correct answer selection (dropdown for options, text input for answer-only)
 - Form validation
 - Save/Cancel actions
+- Smart answer handling based on option count
 
 ---
 
@@ -113,6 +117,8 @@
 - Quiz completion screen
 - Exit quiz button
 - Back to home functionality
+- **Dynamic option display** (hides options section if no options)
+- **Smart answer reveal** (shows option or plain text based on question type)
 
 ---
 
@@ -226,11 +232,19 @@ src/
 2. Views quiz listing page
 3. Sets time period preference
 4. Creates or selects a quiz
+   - Can add questions with 0 options (answer-only format)
+   - Can add questions with 1+ options (multiple choice format)
 5. Quiz plays in presentation mode
 6. Each question displays for set time
 7. Answer reveals automatically
+   - Options-based questions show highlighted correct option
+   - Answer-only questions show plain text answer
 8. User manually advances to next
 9. Quiz ends with completion screen
+
+### Question Types Supported
+- **Answer-only questions** (0 options): Display question and reveal answer text
+- **Multiple choice questions** (1+ options): Display options and highlight correct one
 
 ### Technical Highlights
 - TypeScript for type safety
@@ -327,5 +341,26 @@ src/
 - Firebase integration complete ✓
 - TypeScript types defined ✓
 - Error handling implemented ✓
+- **NEW: Dynamic options support (0 to n)** ✓
+- **NEW: Answer-only question format** ✓
+- **NEW: Smart answer display in quiz player** ✓
 
 **Status: IMPLEMENTATION COMPLETE** ✅
+
+## Recent Updates
+
+### Dynamic Options Feature (Latest)
+**What Changed:**
+- Questions can now have **0, 1, or more options** (previously fixed at 4)
+- When options = 0: Shows only the answer text (no multiple choice)
+- When options ≥ 1: Shows traditional multiple choice format
+- Add/Remove options dynamically in MCQ form
+- Smart validation based on option count
+- Updated quiz player to handle both formats
+- Enhanced quiz preview to show answer-only questions
+
+**Files Modified:**
+- `src/components/Quiz/MCQForm.tsx` - Dynamic option management
+- `src/components/Quiz/QuizPlayer.tsx` - Conditional display logic
+- `src/components/Quiz/QuizForm.tsx` - Preview for answer-only format
+- `src/App.css` - Styles for new elements

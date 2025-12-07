@@ -102,7 +102,8 @@ export const QuizPlayer = () => {
   }
 
   const currentMCQ: MCQ = quiz.mcqs[currentMCQIndex];
-  const correctOption = currentMCQ.options.find(opt => opt.id === currentMCQ.answer);
+  const correctOption = currentMCQ.options?.find(opt => opt.id === currentMCQ.answer);
+  const hasOptions = currentMCQ.options?.length > 0;
 
   return (
     <div className="quiz-player">
@@ -128,25 +129,33 @@ export const QuizPlayer = () => {
       <div className="mcq-display">
         <h3 className="question">{currentMCQ.question}</h3>
         
-        <div className="options-display">
-          {currentMCQ.options.map((option) => (
-            <div
-              key={option.id}
-              className={`option-display ${
-                showAnswer && option.id === currentMCQ.answer ? 'correct-answer' : ''
-              }`}
-            >
-              <span className="option-label">{option.id.toUpperCase()}.</span>
-              <span className="option-text">{option.text}</span>
-            </div>
-          ))}
-        </div>
+        {hasOptions && (
+          <div className="options-display">
+            {currentMCQ.options.map((option) => (
+              <div
+                key={option.id}
+                className={`option-display ${
+                  showAnswer && option.id === currentMCQ.answer ? 'correct-answer' : ''
+                }`}
+              >
+                <span className="option-label">{option.id.toUpperCase()}.</span>
+                <span className="option-text">{option.text}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {showAnswer && (
           <div className="answer-reveal">
             <h4>Correct Answer:</h4>
             <p className="correct-answer-text">
-              {correctOption?.id.toUpperCase()}. {correctOption?.text}
+              {hasOptions ? (
+                <>
+                  {correctOption?.id.toUpperCase()}. {correctOption?.text}
+                </>
+              ) : (
+                currentMCQ.answer
+              )}
             </p>
             <button onClick={handleNext} className="next-btn">
               {currentMCQIndex < quiz.mcqs.length - 1 ? 'Next Question' : 'Finish Quiz'}
