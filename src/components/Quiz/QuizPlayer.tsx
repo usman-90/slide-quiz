@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { getQuizzes, getUserTimePeriod } from '../../utils/database';
 import type { Quiz, MCQ } from '../../types';
+import { ThemeToggle } from '../ThemeToggle';
 
 export const QuizPlayer = () => {
   const { quizId } = useParams<{ quizId: string }>();
@@ -105,6 +106,9 @@ export const QuizPlayer = () => {
 
   return (
     <div className="quiz-player">
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
+        <ThemeToggle />
+      </div>
       <div className="quiz-header">
         <h2>{quiz.title}</h2>
         <div className="quiz-progress">
@@ -116,7 +120,9 @@ export const QuizPlayer = () => {
         <div className="timer-circle">
           <span className="timer-text">{timeLeft ?? timePeriod}s</span>
         </div>
-        <div className="timer-bar" style={{ width: `${timeLeft !== null ? (timeLeft / timePeriod) * 100 : 100}%` }}></div>
+        <div className="timer-bar-container">
+          <div className="timer-bar" style={{ width: `${timeLeft !== null ? (timeLeft / timePeriod) * 100 : 100}%` }}></div>
+        </div>
       </div>
 
       <div className="mcq-display">

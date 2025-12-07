@@ -5,6 +5,7 @@ import { getQuizzes, deleteQuiz } from '../../utils/database';
 import type { Quiz } from '../../types';
 import { TimeSetting } from '../TimeSetting';
 import { QuizForm } from './QuizForm';
+import { ThemeToggle } from '../ThemeToggle';
 
 export const QuizList = () => {
   const { user, loading: authLoading, logout } = useAuth();
@@ -67,7 +68,10 @@ export const QuizList = () => {
     <div className="quiz-list-container">
       <div className="header">
         <h1>SlideQuiz</h1>
-        <button onClick={logout} className="logout-btn">Logout</button>
+        <div className="header-actions">
+          <ThemeToggle />
+          <button onClick={logout} className="logout-btn">Logout</button>
+        </div>
       </div>
 
       <TimeSetting />

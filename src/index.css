@@ -1,3 +1,92 @@
+/* Theme Variables */
+:root[data-theme="light"] {
+  /* Primary Colors - Fiverr-inspired */
+  --primary: #1dbf73;
+  --primary-hover: #19a463;
+  --primary-light: #e8f7f0;
+  --primary-dark: #108a50;
+  
+  /* Secondary Colors */
+  --secondary: #446ee7;
+  --secondary-hover: #3d5fd1;
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #fafafa;
+  --bg-gradient-start: #f9fafb;
+  --bg-gradient-end: #f3f4f6;
+  
+  /* Text Colors */
+  --text-primary: #222325;
+  --text-secondary: #62646a;
+  --text-tertiary: #95979d;
+  --text-inverse: #ffffff;
+  
+  /* Border Colors */
+  --border-primary: #dadbdd;
+  --border-secondary: #e4e5e7;
+  --border-light: #f1f1f1;
+  
+  /* Status Colors */
+  --success: #1dbf73;
+  --success-light: #d4f4e2;
+  --error: #f74040;
+  --error-light: #ffe0e0;
+  --warning: #ffbe5b;
+  --warning-light: #fff4e0;
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="dark"] {
+  /* Primary Colors - Fiverr-inspired */
+  --primary: #1dbf73;
+  --primary-hover: #19a463;
+  --primary-light: #1a3a2e;
+  --primary-dark: #25d687;
+  
+  /* Secondary Colors */
+  --secondary: #5b7ceb;
+  --secondary-hover: #6c8af0;
+  
+  /* Background Colors */
+  --bg-primary: #1f1f1f;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary: #353535;
+  --bg-gradient-start: #1a1a1a;
+  --bg-gradient-end: #2d2d2d;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #c5c6c9;
+  --text-tertiary: #95979d;
+  --text-inverse: #1f1f1f;
+  
+  /* Border Colors */
+  --border-primary: #404145;
+  --border-secondary: #353535;
+  --border-light: #2a2a2a;
+  
+  /* Status Colors */
+  --success: #1dbf73;
+  --success-light: #1a3a2e;
+  --error: #ff6b6b;
+  --error-light: #3d1f1f;
+  --warning: #ffbe5b;
+  --warning-light: #3d2f1f;
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,11 +94,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
